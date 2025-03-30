@@ -4,15 +4,24 @@ title: "AI-Enhanced Development: Book Overview"
 permalink: /books/
 ---
 
-<section class="prose lg:prose-xl max-w-3xl mx-auto my-12">
-  <header>
-    <h1 class="text-center">AI-Enhanced Development: Essential Tactics for Leveraging AI in Your Workflow</h1>
-    <p class="text-center text-gray-600">A comprehensive guide to augmenting developer workflows with GenAI.</p>
+<section class="max-w-4xl mx-auto my-16 px-4">
+  <!-- Cover Image -->
+  <figure class="mb-12">
+    <img src="{{ '/books/coverPage.png' | relative_url }}" alt="Book Cover" class="w-full object-cover rounded-lg shadow-lg">
+  </figure>
+
+  <!-- Header Section -->
+  <header class="text-center mb-12">
+    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4">
+      AI-Enhanced Development: Essential Strategies to Leverage AI in Your Workflow
+    </h1>
+    <p class="text-lg text-gray-600">
+      A comprehensive guide to augmenting developer workflows with GenAI.
+    </p>
   </header>
 
-  <hr class="my-8">
-
-  <section class="table-of-contents">
+  <!-- Table of Contents -->
+  <section class="prose lg:prose-xl mx-auto">
     <h2>Table of Contents</h2>
     <ol>
       <li><a href="{{ '/books/introduction/' | relative_url }}">Introduction</a></li>
@@ -26,7 +35,10 @@ permalink: /books/
     </ol>
   </section>
 
-  <footer class="text-center mt-12">
-    <p>Enjoy your journey into AI-enhanced development!</p>
+  <!-- Footer Section -->
+  <footer class="text-center mt-16">
+    <p class="text-sm text-gray-500">
+      Enjoy your journey into AI-enhanced development!
+    </p>
   </footer>
 </section>
