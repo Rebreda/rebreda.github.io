@@ -9,7 +9,7 @@ permalink: /books/
   <div class="flex-grow container mx-auto px-4 py-12 flex flex-col justify-center">
     <!-- Cover Image -->
     <figure class="mb-12">
-      <img src="{{ '/assests/images/cover-page.png' | relative_url }}" alt="Book Cover" class="w-full md:max-w-3xl mx-auto object-cover rounded-lg shadow-2xl">
+      <img src="{{ '/assets/images/cover-page.png' | relative_url }}" alt="Book Cover" class="w-full md:max-w-3xl mx-auto object-cover rounded-lg shadow-2xl">
     </figure>
 
     <!-- Header Section -->
