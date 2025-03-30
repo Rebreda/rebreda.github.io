@@ -4,7 +4,10 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://quickthoughts.ca" # the base hostname & protocol for your site
 author:
   email: blog@quickthoughts.ca
-
+collections:
+  books:
+    output: true # so chapters are rendered as standalone pages
+    permalink: /books/:name/
 # Build settings
 markdown: kramdown
 theme: minima
