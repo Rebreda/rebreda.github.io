@@ -3,8 +3,7 @@ layout: default
 ---
 
 <section class="max-w-4xl mx-auto my-12 px-4">
-  <section>{% raw %}{{ content }}{% endraw %}</section>
-
+  <section>{{ content }}</section>
   {% for post in site.posts limit:5 %}
   <article
     class="mb-8 bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
