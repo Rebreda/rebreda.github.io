@@ -2,24 +2,29 @@
 layout: default
 ---
 
-<section class="home-posts">
-    {% for post in site.posts limit:5 %}
-    <article class="post bg-white shadow-md rounded-lg p-6 mb-6">
-        <header class="post-header mb-4">
-            <h2 class="post-title text-2xl font-bold text-gray-800">
-                <a href="{{ post.url | relative_url }}" class="hover:underline">{{ post.title }}</a>
-            </h2>
-            <p class="post-meta text-sm text-gray-500 mt-2">
-                Published on {{ post.date | date: "%B %d, %Y" }} in 
-                {% for category in post.categories %}
-                    <a href="{{ site.baseurl }}/categories/{{ category }}" class="text-blue-500 hover:underline">{{ category }}</a>{% if forloop.last == false %}, {% endif %}
-                {% endfor %}
-            </p>
-        </header>
+<section class="max-w-4xl mx-auto my-12 px-4">
+  {% for post in site.posts limit:5 %}
+  <article class="mb-8 bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300">
+    <header class="p-6 bg-gradient-to-r from-purple-600 to-pink-600">
+      <h2 class="text-3xl font-extrabold tracking-tight text-white">
+        <a href="{{ post.url | relative_url }}" class="hover:underline">{{ post.title }}</a>
+      </h2>
+      <p class="mt-2 text-sm text-gray-100">
+        Published on <time datetime="{{ post.date | date: '%Y-%m-%d' }}">{{ post.date | date: "%B %d, %Y" }}</time>
+        {% if post.categories %}
+          in
+          {% for category in post.categories %}
+            <a href="{{ site.baseurl }}/categories/{{ category }}" class="inline-block ml-1 px-2 py-0.5 bg-pink-700 rounded text-xs font-medium hover:bg-pink-800">
+              {{ category }}
+            </a>{% unless forloop.last %}{% if forloop.index0 != post.categories | size - 1 %},{% endif %}{% endunless %}
+          {% endfor %}
+        {% endif %}
+      </p>
+    </header>
 
-        <div class="post-excerpt text-gray-700 leading-relaxed">
-            {{ post.excerpt | strip_html | truncatewords: 30 }}
-        </div>
-    </article>
-    {% endfor %}
+    <div class="p-6 text-gray-700 leading-relaxed prose prose-indigo">
+      {{ post.excerpt | strip_html | truncatewords: 30 }}
+    </div>
+  </article>
+  {% endfor %}
 </section>

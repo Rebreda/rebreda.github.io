@@ -1,27 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ page.title }}</title>
+    <!-- Tailwind CSS Browser Build -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-</head>
-<body class="bg-gray-100 text-gray-900">
-    <header class="bg-blue-600 text-white p-4">
-        <h1 class="text-2xl font-bold"><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
-        <nav>
-            <ul class="flex space-x-4">
-                {% for link in site.nav_links %}
-                    <li><a href="{{ link.url | relative_url }}" class="hover:underline">{{ link.title }}</a></li>
-                {% endfor %}
-            </ul>
+  </head>
+  <body class="bg-gray-100 text-gray-900 antialiased">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between">
+        <h1 class="text-3xl font-bold">
+          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+        </h1>
+        <nav class="mt-4 sm:mt-0">
+          <ul class="flex flex-wrap space-x-4">
+            {% for link in site.nav_links %}
+              <li>
+                <a href="{{ link.url | relative_url }}" class="text-white hover:underline transition-colors duration-200">
+                  {{ link.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
         </nav>
+      </div>
     </header>
-    <main class="p-4">
-        {{ content }}
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-8">
+      {{ content }}
     </main>
-    <footer class="bg-gray-800 text-white text-center p-4">
-        <p>&copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.</p>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+      <div class="max-w-6xl mx-auto px-6 py-4 text-center">
+        <p class="text-sm">
+          &copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.
+        </p>
+      </div>
     </footer>
-</body>
+  </body>
 </html>
