@@ -9,19 +9,26 @@
   </head>
   <body class="bg-gray-100 text-gray-900 antialiased">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-lg">
-      <div class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between">
+    <header
+      class="bg-gradient-to-r from-blue-300 to-indigo-300 text-white shadow-lg"
+    >
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between"
+      >
         <h1 class="text-3xl font-bold">
           <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
         </h1>
         <nav class="mt-4 sm:mt-0">
           <ul class="flex flex-wrap space-x-4">
             {% for link in site.nav_links %}
-              <li>
-                <a href="{{ link.url | relative_url }}" class="text-white hover:underline transition-colors duration-200">
-                  {{ link.title }}
-                </a>
-              </li>
+            <li>
+              <a
+                href="{{ link.url | relative_url }}"
+                class="text-white hover:underline transition-colors duration-200"
+              >
+                {{ link.title }}
+              </a>
+            </li>
             {% endfor %}
           </ul>
         </nav>
@@ -29,15 +36,14 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-6 py-8">
-      {{ content }}
-    </main>
+    <main class="max-w-6xl mx-auto px-6 py-8">{{ content }}</main>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white">
       <div class="max-w-6xl mx-auto px-6 py-4 text-center">
         <p class="text-sm">
-          &copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights reserved.
+          &copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights
+          reserved.
         </p>
       </div>
     </footer>
