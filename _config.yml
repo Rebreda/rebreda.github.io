@@ -1,0 +1,12 @@
+title: Quick Thoughts
+description: Some quick thoughts on software development, AI, and startups.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://quickthoughts.ca" # the base hostname & protocol for your site
+author:
+  email: blog@quickthoughts.ca
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
