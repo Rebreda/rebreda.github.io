@@ -10,6 +10,8 @@ The rise of Generative AI (GenAI) is transforming how developers approach common
 
 It's a fairly common dilemma that a developer wants to use a libary to solve a specific issue. For exmaple, with React, I might want a component that enables more complex drop down menu functionality (like a nice inline "select many" UX). However, when looking for good 3rd party libraries, they typically provide every feature imaginable which can cause bloat, both in terms of size of the codebase but also in API and developer documentation.
 
+&nbsp;
+
 When a project only requires a subset of features from a comprehensive library, leveraging GenAI to implement the essential functionality can offer significant advantages:
 
 - **Seamless Integration with Project's Coding Style:**  
@@ -20,6 +22,8 @@ When a project only requires a subset of features from a comprehensive library, 
 
 - **Enhanced Security and Maintainability:**  
   Writing code in-house means you have full visibility into how it works, reducing dependency on third-party libraries that might not be as thoroughly audited or could potentially introduce vulnerabilities. With GenAI assisting in generating a baseline, you benefit from speed without sacrificing control.
+
+&nbsp;
 
 That being said, there are trade-offs to consider:
 
@@ -39,6 +43,8 @@ To strike a balance, consider a hybrid approach:
 
 - **Tailor for Maintainability:**  
   Customize the generated code to blend seamlessly with the existing codebase, adopt your team's best practices, and ensure quality through comprehensive testing.
+
+&nbsp;
 
 This balanced strategy enables software developers to harness the benefits of external expertise while keeping their applications lightweight, secure, and maintainable. GenAI doesn't completely replace the need for libraries; rather, it offers a dynamic tool that can help you pick and choose the best parts while filling in the gaps with customized, purpose-built solutions.
 
