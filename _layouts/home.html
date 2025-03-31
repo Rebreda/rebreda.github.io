@@ -3,36 +3,75 @@ layout: default
 ---
 
 <section class="max-w-4xl mx-auto my-12 px-4">
-  <section>{{ content }}</section>
-  {% for post in site.posts limit:5 %}
-  <article
-    class="mb-8 bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
-  >
-    <header class="p-6 bg-gradient-to-r from-purple-600 to-pink-600">
-      <h2 class="text-3xl font-extrabold tracking-tight text-white">
-        <a href="{{ post.url | relative_url }}" class="hover:underline"
+  <!-- Latest Posts -->
+  <section>
+    <h2 class="text-4xl font-bold mb-6">Latest Posts</h2>
+    {% for post in site.posts limit:5 %}
+    <article
+      class="mb-8 bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+    >
+      <header class="p-6 bg-gradient-to-r from-purple-600 to-pink-600">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white">
+          <a href="{{ post.url | relative_url }}" class="hover:underline"
+            >{{ post.title }}</a
+          >
+        </h2>
+        <p class="mt-2 text-sm text-gray-100">
+          Published on
+          <time datetime="{{ post.date | date: '%Y-%m-%d' }}"
+            >{{ post.date | date: "%B %d, %Y" }}</time
+          >
+        </p>
+      </header>
+      <div class="p-6 text-gray-700 leading-relaxed prose prose-indigo">
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
+      </div>
+    </article>
+    {% endfor %}
+  </section>
+
+  <!-- Featured Posts -->
+  <section>
+    <h2 class="text-4xl font-bold mb-6">Featured Posts</h2>
+    {% for post in site.posts limit:3 %} {% if post.featured %}
+    <article
+      class="mb-8 bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+    >
+      <header class="p-6 bg-gradient-to-r from-yellow-500 to-orange-500">
+        <h2 class="text-3xl font-extrabold tracking-tight text-white">
+          <a href="{{ post.url | relative_url }}" class="hover:underline"
+            >{{ post.title }}</a
+          >
+        </h2>
+      </header>
+      <div class="p-6 text-gray-700 leading-relaxed prose prose-indigo">
+        {{ post.excerpt | strip_html | truncatewords: 30 }}
+      </div>
+    </article>
+    {% endif %} {% endfor %}
+  </section>
+
+  <!-- Categories -->
+  <section>
+    <h2 class="text-4xl font-bold mb-6">Categories</h2>
+    {% for category in site.categories %}
+    <h3 class="text-2xl font-bold mt-8 mb-4">{{ category[0] }}</h3>
+    {% for post in category[1] limit:3 %}
+    <article
+      class="mb-6 bg-white shadow rounded-lg p-4 hover:shadow-xl transition-shadow duration-300"
+    >
+      <h2 class="text-xl font-bold">
+        <a
+          href="{{ post.url | relative_url }}"
+          class="text-blue-600 hover:underline"
           >{{ post.title }}</a
         >
       </h2>
-      <p class="mt-2 text-sm text-gray-100">
-        Published on
-        <time datetime="{{ post.date | date: '%Y-%m-%d' }}"
-          >{{ post.date | date: "%B %d, %Y" }}</time
-        >
-        {% if post.categories %} in {% for category in post.categories %}
-        <a
-          href="{{ site.baseurl }}/categories/{{ category }}"
-          class="inline-block ml-1 px-2 py-0.5 bg-pink-700 rounded text-xs font-medium hover:bg-pink-800"
-        >
-          {{ category }} </a
-        >{% unless forloop.last %}{% if forloop.index0 != post.categories | size
-        - 1 %},{% endif %}{% endunless %} {% endfor %} {% endif %}
+      <p class="text-sm text-gray-600">{{ post.date | date: "%B %d, %Y" }}</p>
+      <p class="mt-2 text-gray-700">
+        {{ post.excerpt | strip_html | truncatewords: 20 }}
       </p>
-    </header>
-
-    <div class="p-6 text-gray-700 leading-relaxed prose prose-indigo">
-      {{ post.excerpt | strip_html | truncatewords: 30 }}
-    </div>
-  </article>
-  {% endfor %}
+    </article>
+    {% endfor %} {% endfor %}
+  </section>
 </section>

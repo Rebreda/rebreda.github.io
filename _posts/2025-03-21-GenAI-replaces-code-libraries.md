@@ -3,7 +3,8 @@ layout: post
 title: "Rethinking Library Dependencies in the GenAI age"
 date: 2025-03-21 14:10:48 -0800
 categories: [technology, opinion, genai, javascript]
-tags: [editorial, advice, tech, opinion]
+tags: [editorial, react, llms]
+featured: true
 ---
 
 The rise of Generative AI (GenAI) is transforming how developers approach common development challenges. One emerging trend is the ability to use GenAI to generate custom, lightweight solutions that reduce the need for incorporating large, feature-rich libraries.
