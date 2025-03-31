@@ -1,0 +1,51 @@
+---
+layout: default
+---
+
+<article
+  class="max-w-2xl mx-auto my-12 bg-white shadow-lg rounded-xl overflow-hidden"
+>
+  <!-- Post Header -->
+  <header class="bg-gradient-to-r from-blue-300 to-blue-600 p-8 text-white">
+    <h1 class="text-4xl font-extrabold tracking-tight">{{ page.title }}</h1>
+    <p class="mt-2 text-base">
+      Published on
+      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+        {{ page.date | date: "%B %d, %Y" }}
+      </time>
+      {% if page.categories %}
+        in 
+        {% for category in page.categories %}
+          <a
+            href="{{ site.baseurl }}/categories/{{ category }}"
+            class="inline-block ml-1 px-2 py-0.5 bg-blue-700 rounded text-xs font-medium hover:bg-blue-800"
+          >
+            {{ category }}
+          </a>
+          {% if forloop.index0 < page.categories.size - 1 %}, {% endif %}
+        {% endfor %}
+      {% endif %}
+    </p>
+  </header>
+
+  <!-- Post Content -->
+  <div class="prose max-w-none p-8">{{ content | markdownify }}</div>
+
+  <!-- Post Footer -->
+  <footer class="bg-gray-50 p-8 border-t">
+    {% if page.tags %}
+      <div class="text-sm text-gray-600">
+        <span class="font-semibold">Tags:</span>
+        {% for tag in page.tags %}
+          <a
+            href="{{ site.baseurl }}/tags/{{ tag }}"
+            class="inline-block ml-2 px-3 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100"
+          >
+            {{ tag }}
+          </a>
+          {% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      </div>
+    {% endif %}
+  </footer>
+</article>

@@ -4,12 +4,25 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://quickthoughts.ca" # the base hostname & protocol for your site
 author:
   email: blog@quickthoughts.ca
+
 collections:
   books:
     output: true # so chapters are rendered as standalone pages
     permalink: /books/:name/
+  posts:
+    output: true
+    permalink: /:categories/:title/
+
 # Build settings
 markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+
+# Custom category permalink
+defaults:
+  - scope:
+      path: "" # Applies to all posts
+    values:
+      layout: "post"
+      permalink: "/:categories/:title/"

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a Flask Application: Where to Start</title>
+    <!-- Tailwind CSS Browser Build -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.4.0/dist/typography.min.css"
+    />
+  </head>
+  <body class="bg-gray-100 text-gray-900 antialiased">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-gray-300 to-gray-200 text-gray-800">
+      <div
+        class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between"
+      >
+        <h1 class="text-3xl font-bold">
+          <a href="/">Quick Thoughts</a>
+        </h1>
+        <nav class="mt-4 sm:mt-0">
+          <ul class="flex flex-wrap space-x-4">
+            
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-6 py-8"><article
+  class="max-w-2xl mx-auto my-12 bg-white shadow-lg rounded-xl overflow-hidden"
+>
+  <!-- Post Header -->
+  <header class="bg-gradient-to-r from-blue-300 to-blue-600 p-8 text-white">
+    <h1 class="text-4xl font-extrabold tracking-tight">Building a Flask Application: Where to Start</h1>
+    <p class="mt-2 text-base">
+      Published on
+      <time datetime="2022-02-09">
+        February 09, 2022
+      </time>
+      
+        in 
+        
+          <a
+            href="/categories/development"
+            class="inline-block ml-1 px-2 py-0.5 bg-blue-700 rounded text-xs font-medium hover:bg-blue-800"
+          >
+            development
+          </a>
+          , 
+        
+          <a
+            href="/categories/opinion"
+            class="inline-block ml-1 px-2 py-0.5 bg-blue-700 rounded text-xs font-medium hover:bg-blue-800"
+          >
+            opinion
+          </a>
+          , 
+        
+      
+    </p>
+  </header>
+
+  <!-- Post Content -->
+  <div class="prose max-w-none p-8"><p>Flask is a Python framework designed to provide a lightweight and highly flexible web server. <a href="http://flask.pocoo.org/docs/1.0/">Flask</a> sells itself by stating how unopinionated it is, how few dependancies are required and how simple it is to get developing. Unlike <a href="https://www.djangoproject.com/">Django</a>, which has the opposite mentality of Flask, there is no default modeling, database abstraction or form management. All that’s provided is an interface to basic web server needs like requests, routing and templating - the bare bones required to create a web app.</p>
+
+<p>There are benefits to this approach - mainly, there’s no requirment to implement functionality specific to Flask (for the most part). If you’ve worked with Django, or other web frameworks (like <a href="https://www.meteor.com/">Meteor</a>, or even <a href="https://wordpress.org/">WordPress</a>), there’s a learning curve when it comes to implememnting functionality outside the default framework. Another positive is how there are an abundance of extenstions that provide a wide range of solutions to common application problems. Flask-SQLAlchemy, for example, connects the standard SQLAlchemy to Flask, providing boilerplate logic when creating databases.</p>
+
+<p>Perhaps the main negative is to all that freedom is when you want things to work without configuration or potentional conflict. Relying on third-part support means development of core features and external code can fall out of wack - especially when major iterations are released. But this concern is mitigated when you do your dudiligence selecting plugins.</p>
+
+<h2 id="what-other-tech-should-be-used">What other tech should be used?</h2>
+
+<p>Selecting Flask is only one part of the puzzle when building a web app. A web framework like Flask doesn’t provide all the bells and whistles needed to create a complete app. The frontend, database, devtools and more all need to be sorted too.</p>
+
+<h3 id="picking-a-database">Picking a database</h3>
+
+<p>Backend’s need to be connected to a database, where many options abound. Personally, I’d look for well supported database ORMs, like SQLAlchemy. From there, I’d choose whichever makes the most sense. <a href="https://www.postgresql.org/">Postgres</a> is a personal favourite since its FOSS and very capable - implementing the full SQL standard and many new features (like JSON). MySQL is also a popular choice, it’s mostly free and has a native IDE. Outside of SQL (relational DBs) exist NoSQL databases, Mongo being the mainstream choice for most, it provides all the benefits of Non relation databases (like very flexible data stores, easy data modeling and native JSON support). Mongo also has the benefit of being very well supported, both financially and across programming languages.</p>
+
+<p>Redis and in-memory keybased datastores should also be considered depending on how you want to access data. Redis provides a simple and <em>fast</em> way to pull data like sessions and simple objects without bogging down your server.</p>
+
+<h3 id="choosing-front-end-tech">Choosing Front end tech</h3>
+
+<p>Another choice that needs to be settled is what templating engine should be picked. My <a href="https://gabehab.github.io/me/python/vue/web-development/programming/opinion/2019/01/31/refreshing-old-stacks.html">previous article</a> takes in depth about the newest tech in client and UI rendering. But ultimately, if you know you don’t need the power and complexity created by using new fangled templating engines, a simple native tempalting engine can be used, like Jinja for Flask, or EJS, Pug, or Handlebars for Express and Ruby.</p>
+
+<h3 id="what-about-development-tools">What about development tools?</h3>
+
+<p>Another factor is how you actually want to develop your application. This means local development environments that compliment your code and lifestyle. The use of devtools has been made easy thanks to Gulp, NPM, Grunt, Webpack, and the like. These tools may seem overkill or hard to learn but creating new programs without them is just as tedious.</p>
+
+<p>Also, source control is pivotal, and 100% neccessary when creating <em>any</em> sized project! Github is very popular, and pretty straightforward.</p>
+
+<h2 id="in-the-end-there-are-a-tonne-of-options">In the end, there are a tonne of options</h2>
+
+<p>Only you know what you need and want - but make sure to research all your options! Overlooking this can mean lots of code debt in the future. Here’s an example of the tech I’ve used in the past to create complex web apps.</p>
+
+<table class="table table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Part of Stack</th>
+      <th>Technology</th>
+      <th>Libraries</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Frontend</td>
+      <td>Vue</td>
+      <td>Vuex, Router, SCSS</td>
+    </tr>
+    <tr>
+      <td>Backend</td>
+      <td>Flask</td>
+      <td>SQLAlchemy, Celery, Pandas</td>
+    </tr>
+    <tr>
+      <td>Database</td>
+      <td>Postgres, Redis</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>DevTools</td>
+      <td>Venv, Webpack</td>
+      <td>Vue-cli, Uglify</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+  <!-- Post Footer -->
+  <footer class="bg-gray-50 p-8 border-t">
+    
+      <div class="text-sm text-gray-600">
+        <span class="font-semibold">Tags:</span>
+        
+          <a
+            href="/tags/python"
+            class="inline-block ml-2 px-3 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100"
+          >
+            python
+          </a>
+          ,
+        
+          <a
+            href="/tags/vue"
+            class="inline-block ml-2 px-3 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100"
+          >
+            vue
+          </a>
+          ,
+        
+          <a
+            href="/tags/web-development"
+            class="inline-block ml-2 px-3 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100"
+          >
+            web-development
+          </a>
+          ,
+        
+          <a
+            href="/tags/programming"
+            class="inline-block ml-2 px-3 py-1 bg-blue-50 text-blue-600 rounded hover:bg-blue-100"
+          >
+            programming
+          </a>
+          
+        
+      </div>
+    
+  </footer>
+</article>
+</main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+      <div class="max-w-6xl mx-auto px-6 py-4 text-center">
+        <p class="text-sm">
+          &copy; 2025 Quick Thoughts. All rights
+          reserved.
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
