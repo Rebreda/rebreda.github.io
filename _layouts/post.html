@@ -20,8 +20,7 @@ layout: default
       >
         {{ category }}
       </a>
-      {% if forloop.index0 < page.categories.size - 1 %}, {% endif %} {% endfor
-      %} {% endif %}
+      {% unless forloop.last %}, {% endunless %} {% endfor %} {% endif %}
     </p>
   </header>
 
@@ -40,7 +39,7 @@ layout: default
       >
         {{ tag }}
       </a>
-      {% unless forloop.last %},{% endunless %} {% endfor %}
+      {% unless forloop.last %}, {% endunless %} {% endfor %}
     </div>
     {% endif %}
   </footer>
