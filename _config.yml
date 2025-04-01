@@ -15,11 +15,3 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
-
-# Custom category permalink
-defaults:
-  - scope:
-      path: "" # Applies to all posts
-    values:
-      layout: "post"
-      permalink: "/posts/:title/" # Ensure this matches the new structure
