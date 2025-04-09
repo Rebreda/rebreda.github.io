@@ -6,26 +6,35 @@ layout: default
   class="max-w-2xl mx-auto my-12 bg-white shadow-lg rounded-xl overflow-hidden"
 >
   <!-- Post Header -->
-  <header class="bg-gradient-to-r from-blue-500 to-blue-600 p-8 text-white">
-    <h1 class="text-4xl font-bold text-white">{{ page.title }}</h1>
-    <p class="mt-2 text-base">
-      Published on
-      <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
-        {{ page.date | date: "%B %d, %Y" }}
-      </time>
-      {% if page.categories %} in {% for category in page.categories %}
-      <a
-        href="{{ site.baseurl }}/categories/{{ category }}"
-        class="inline-block ml-1 px-2 py-0.5 bg-blue-700 rounded text-xs font-medium hover:bg-blue-800"
-      >
-        {{ category }}
-      </a>
-      {% unless forloop.last %}, {% endunless %} {% endfor %} {% endif %}
-    </p>
+  <header class="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
+    {% if page.hero_path %}
+    <img
+      src="{{ page.hero_path }}"
+      alt="{{ page.hero_alt }}"
+      class="w-full h-48 object-cover rounded-t-lg"
+    />
+    {% endif %}
+    <div class="p-8">
+      <h1 class="text-4xl font-bold text-white">{{ page.title }}</h1>
+      <p class="mt-2 text-base">
+        Published on
+        <time datetime="{{ page.date | date: '%Y-%m-%d' }}">
+          {{ page.date | date: "%B %d, %Y" }}
+        </time>
+        {% if page.categories %} in {% for category in page.categories %}
+        <a
+          href="{{ site.baseurl }}/categories/{{ category }}"
+          class="inline-block ml-1 px-2 py-0.5 bg-blue-700 rounded text-xs font-medium hover:bg-blue-800"
+        >
+          {{ category }}
+        </a>
+        {% unless forloop.last %}, {% endunless %} {% endfor %} {% endif %}
+      </p>
+    </div>
   </header>
 
   <!-- Post Content -->
-  <div class="prose max-w-none p-8">{{ content | markdownify }}</div>
+  <div class="prose !max-w-full !w-full p-8">{{ content | markdownify }}</div>
 
   <!-- Post Footer -->
   <footer class="bg-gray-50 p-8 border-t">
