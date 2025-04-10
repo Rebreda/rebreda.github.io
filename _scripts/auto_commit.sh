@@ -5,21 +5,16 @@
 # It does the following:
 #   1. Sources environment variables from .env (in the repository root).
 #   2. Gathers the last few commit messages for context.
-#   3. Captures the names of changed files and their diffs (truncated if they are too long).
-#   4. Sends a request to OpenAI's ChatCompletion API (using gpt-4) to generate a conventional commit message.
-#   5. Provides analytics (prompt character count, tokens used, etc.) in a nicely formatted summary.
+#   3. Captures the names of changed files and their diffs (or content for new files, truncated if too long).
+#   4. Sends a request to OpenAI's ChatCompletion API (using the specified model) to generate a conventional commit message.
+#   5. Provides analytics (prompt character count, tokens used, etc.) in a summary.
 #   6. Stages all changes, commits with the generated commit message, and pushes.
-#
-# Requirements:
-#   - curl, git, and jq must be installed.
-#   - Your OpenAI API key must be in the .env file as OPENAI_API_KEY.
 #
 # Usage:
 #   ./auto_commit.sh [-n NUMBER_OF_COMMITS] [-d DIFF_TRUNCATION] [-m MODEL]
-#
-#   -n NUMBER_OF_COMMITS: Number of past commit messages to include for context (default: 5)
-#   -d DIFF_TRUNCATION: Maximum number of characters per file diff to include (default: 1000)
-#   -m MODEL: OpenAI model to use (default: "gpt-4")
+#   -n NUMBER_OF_COMMITS: Number of past commit messages to include (default: 5)
+#   -d DIFF_TRUNCATION: Maximum number of characters per file diff/content (default: 1000)
+#   -m MODEL: OpenAI model to use (default: "gpt-4o-mini")
 
 set -e
 
@@ -64,18 +59,28 @@ if [ -z "$commit_context" ]; then
     commit_context="No previous commit messages found."
 fi
 
-# --- Gather changed files and their diffs ---
+# --- Gather changed files and their diffs/content ---
 echo "Collecting changes..."
 changed_files=$(git status --porcelain | awk '{print $2}')
 diff_context=""
 for file in $changed_files; do
     if [ -f "$file" ]; then
-        diff_content=$(git diff "$file")
-        # Truncate diff if too long
-        if [ ${#diff_content} -gt $DIFF_TRUNCATION ]; then
-            diff_content="${diff_content:0:$DIFF_TRUNCATION} ... [truncated]"
+        # Check if the file is new (untracked)
+        if git ls-files --others --exclude-standard | grep -qx "$file"; then
+            # For new files, include a snippet of their content instead of diff
+            file_content=$(head -c "$DIFF_TRUNCATION" "$file")
+            if [ ${#file_content} -eq "$DIFF_TRUNCATION" ]; then
+                file_content+=" ... [truncated]"
+            fi
+            diff_context+="File (new): $file\nContent snippet:\n$file_content\n\n"
+        else
+            # For modified files, use diff
+            diff_content=$(git diff "$file")
+            if [ ${#diff_content} -gt $DIFF_TRUNCATION ]; then
+                diff_content="${diff_content:0:$DIFF_TRUNCATION} ... [truncated]"
+            fi
+            diff_context+="File: $file\nDiff:\n$diff_content\n\n"
         fi
-        diff_context+="File: $file\nDiff:\n$diff_content\n\n"
     else
         diff_context+="File: $file (no diff available - file might be removed)\n\n"
     fi
@@ -92,7 +97,7 @@ prompt="Generate a concise commit message in the conventional commit style (e.g.
 Last commit messages:
 $commit_context
 
-Changed files and diffs:
+Changed files and diffs/content:
 $diff_context
 
 Please output only the commit message."
@@ -125,7 +130,7 @@ prompt_tokens=$(echo "$response" | jq -r '.usage.prompt_tokens')
 completion_tokens=$(echo "$response" | jq -r '.usage.completion_tokens')
 total_tokens=$(echo "$response" | jq -r '.usage.total_tokens')
 
-# display response data
+# Display raw response data for debugging if needed
 echo "Response data:"
 echo "--------------------------------"
 echo "$response" 
