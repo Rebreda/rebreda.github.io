@@ -54,20 +54,28 @@
   </head>
   <body class="bg-gray-100 text-gray-900 antialiased">
     <!-- Header -->
-    <header class="bg-gradient-to-r from-gray-300 to-gray-200 text-gray-800">
+    <header class="bg-gray-900 text-white">
       <div
-        class="max-w-6xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between"
+        class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center"
       >
+        <!-- Logo and Title -->
         <h1 class="text-3xl font-bold">
-          <a href="{{ '/' | relative_url }}">{{ site.title }}</a>
+          <a
+            href="{{ '/' | relative_url }}"
+            class="text-gray-800 hover:text-gray-300"
+          >
+            {{ site.title }}
+          </a>
         </h1>
+
+        <!-- Navigation Menu -->
         <nav class="mt-4 sm:mt-0">
-          <ul class="flex flex-wrap space-x-4">
+          <ul class="flex space-x-6">
             {% for link in site.nav_links %}
             <li>
               <a
                 href="{{ link.url | relative_url }}"
-                class="text-white hover:underline transition-colors duration-200"
+                class="text-white hover:text-gray-300 transition-colors duration-200"
               >
                 {{ link.title }}
               </a>
@@ -79,11 +87,11 @@
     </header>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto px-6 py-8">{{ content }}</main>
+    <main class="max-w-7xl mx-auto px-6 py-8">{{ content }}</main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white">
-      <div class="max-w-6xl mx-auto px-6 py-4 text-center">
+    <footer class="bg-gray-900 text-white">
+      <div class="max-w-7xl mx-auto px-6 py-4 text-center">
         <p class="text-sm">
           &copy; {{ site.time | date: "%Y" }} {{ site.title }}. All rights
           reserved.
