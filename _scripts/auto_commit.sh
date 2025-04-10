@@ -49,9 +49,6 @@ if [ -z "$OPENAI_API_KEY" ]; then
     exit 1
 fi
 
-# --- Paths ---
-POSTS_DIR="$ROOT_DIR/_posts"
-
 # --- Gather the last commit messages ---
 echo "Collecting last $NUM_COMMITS commit messages..."
 commit_context=$(git log -n "$NUM_COMMITS" --pretty=format:"%h - %s" 2>/dev/null)

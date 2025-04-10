@@ -52,3 +52,6 @@ _site/
 
 # Log files
 *.log
+
+# Parcel
+.parcel-cache/
