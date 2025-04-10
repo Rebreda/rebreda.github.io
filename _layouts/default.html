@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }} - {{ site.title }}</title>
+    <title>
+      {{ page.title }}{% if page.title %} - {% endif %}{{ site.title }}
+    </title>
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ page.title }}" />
