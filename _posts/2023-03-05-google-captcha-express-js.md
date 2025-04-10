@@ -2,11 +2,11 @@
 layout: post
 title: "Using Google's Captcha V3 with Express and Node"
 date: 2023-03-05 17:10:48 -0800
-categories: [development, opinion]
+categories: [development]
 tags: [express, captcha, node, web-development, programming, opinion]
 ---
 
-Before getting started, [check out the newer version of this article](https://quickthoughts.ca/development/degoogle/2020/12/16/using-hcaptcha-in-vue-instead-of-google.html) where I implement hCaptcha with express/Vue. hCaptcha is a non-google dependent captcha service. Otherwise, enjoy.
+Before getting started, [check out the newer version of this article](https://quickthoughts.ca/posts/google-captcha-express-js/) where I use hCaptcha with express/Vue. hCaptcha is a non-google dependent captcha service. Otherwise, enjoy.
 
 Building an anonymous user-facing technology is risky! Abuse, and spam are likely, along with potential DOS and other security/performance issues abound. Hence, [Google ReCaptcha](https://developers.google.com/recaptcha/) - a wide-spread (everyone uses it), intelligent (it's a lot more versatile than before) way to help limit spam from otherwise exposed forms.
 

@@ -3,7 +3,7 @@ layout: post
 title: "Why do Canadian News Sites Track Me so Much?"
 date: 2025-04-01 08:10:27
 tags: [canadian news, trackers]
-categories: [research, investigation]
+categories: [research]
 hero_path: /assets/images/SpyLaptop.png
 hero_alt: "A cartoon image of a laptop with a magnifying glass looking at a concern human using the machine"
 featured: true

@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<section class="container mx-auto my-12 px-4">
+  <h1 class="text-4xl font-bold mb-6">{{ page.title }}</h1>
+
+  {% assign category_name = page.category %} {% assign posts_in_category =
+  site.posts | where_exp:"post", "post.categories contains category_name" %} {%
+  for post in posts_in_category %}
+  <article class="mb-6">
+    <h2 class="text-2xl font-semibold">
+      <a
+        href="{{ post.url | relative_url }}"
+        class="text-blue-600 hover:underline"
+      >
+        {{ post.title }}
+      </a>
+    </h2>
+    <p class="text-gray-600 text-sm">{{ post.date | date: "%B %d, %Y" }}</p>
+    <p class="mt-2 text-gray-700">
+      {{ post.excerpt | strip_html | truncatewords: 25 }}
+    </p>
+  </article>
+  {% endfor %}
+</section>

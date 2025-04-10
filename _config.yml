@@ -9,6 +9,8 @@ collections:
   posts:
     output: true
     permalink: /posts/:title/ # Correctly set to link posts at the root level
+include:
+  - _pages
 
 # Build settings
 markdown: kramdown

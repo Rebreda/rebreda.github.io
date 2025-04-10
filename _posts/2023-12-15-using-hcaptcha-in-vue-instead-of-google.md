@@ -2,7 +2,7 @@
 layout: post
 title: "Using hCaptcha instead of Google's ReCaptcha with Vue and Express"
 date: 2020-12-15 17:10:48 -0800
-categories: [development, degoogle]
+categories: [development]
 tags: [vue, captcha, node, web-development, programming, google]
 ---
 

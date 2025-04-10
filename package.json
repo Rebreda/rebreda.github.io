@@ -1,0 +1,23 @@
+{
+  "name": "rebreda.github.io",
+  "version": "1.0.0",
+  "description": "Welcome to [QuickThoughts.ca](https://QuickThoughts.ca), a blog that explores many topics including:",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rebreda/rebreda.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rebreda/rebreda.github.io/issues"
+  },
+  "homepage": "https://github.com/Rebreda/rebreda.github.io#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.3",
+    "tailwindcss": "^4.1.3"
+  }
+}

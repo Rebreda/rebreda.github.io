@@ -2,101 +2,120 @@
 layout: default
 ---
 
+<!-- Main container for the home page -->
 <section
-  class="container mx-auto my-12 px-4 grid grid-cols-1 md:grid-cols-3 gap-8"
+  class="container mx-auto my-12 px-4 grid grid-cols-1 lg:grid-cols-3 gap-12"
 >
-  <!-- Main Content -->
-  <main class="col-span-2">
-    <!-- Featured Post -->
-    <section class="mb-12">
-      <h2 class="text-4xl font-bold mb-6">Featured Post</h2>
+  <!-- Primary Content Area -->
+  <main class="lg:col-span-2 space-y-12">
+    <!-- Featured Post Section -->
+    <section aria-label="Featured Post">
       {% assign featured_post = site.posts | where: 'featured', true | first %}
       {% if featured_post %}
       <article
         class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
       >
+        {% if featured_post.hero_path %}
         <header>
-          {% if featured_post.hero_path %}
           <img
             src="{{ featured_post.hero_path }}"
             alt="{{ featured_post.hero_alt }}"
-            class="w-full h-48 object-cover rounded-t-lg"
+            class="w-full h-64 object-cover"
           />
-          {% endif %}
-          <h2
-            class="text-4xl font-extrabold tracking-tight text-gray-900 py-2 px-6"
-          >
+        </header>
+        {% endif %}
+        <div class="p-6">
+          <h2 class="text-4xl font-extrabold tracking-tight text-gray-900 mb-3">
             <a
               href="{{ featured_post.url | relative_url }}"
               class="hover:underline"
               >{{ featured_post.title }}</a
             >
           </h2>
-        </header>
-        <div class="py-2 px-6 text-gray-600 leading-relaxed">
-          {{ featured_post.excerpt | strip_html | truncatewords: 30 }}
+          <p class="text-gray-600 leading-relaxed">
+            {{ featured_post.excerpt | strip_html | truncatewords: 40 }}
+          </p>
         </div>
       </article>
       {% endif %}
     </section>
 
-    <!-- Category Sections -->
-    <section>
-      <h2 class="text-4xl font-bold mb-6">Browse by Category</h2>
+    <!-- Browsing by Category Section -->
+    <section aria-label="Browse by Category">
+      <header class="mb-8">
+        <h2 class="text-4xl font-bold capitalize">Browse by Category</h2>
+      </header>
       {% for category in site.categories %}
-      <div class="mb-8">
-        <h3 class="text-2xl font-bold mb-4">{{ category[0] }}</h3>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <article class="mb-12">
+        <header class="mb-4">
+          <h3 class="text-3xl font-bold border-b-2 border-gray-200 pb-2">
+            {{ category[0] }}
+          </h3>
+        </header>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {% for post in category[1] limit:4 %}
-          <article
+          <div
             class="bg-white shadow rounded-lg p-4 hover:shadow-xl transition-shadow duration-300"
           >
-            <h2 class="text-xl font-bold">
-              <a
-                href="{{ post.url | relative_url }}"
-                class="text-blue-600 hover:underline"
-                >{{ post.title }}</a
-              >
-            </h2>
-            <p class="text-sm text-gray-600">
-              {{ post.date | date: "%B %d, %Y" }}
-            </p>
+            <header>
+              <h4 class="text-xl font-bold mb-1">
+                <a
+                  href="{{ post.url | relative_url }}"
+                  class="text-blue-600 hover:underline"
+                  >{{ post.title }}</a
+                >
+              </h4>
+              <p class="text-sm text-gray-500">
+                {{ post.date | date: "%B %d, %Y" }}
+              </p>
+            </header>
             <p class="mt-2 text-gray-700">
               {{ post.excerpt | strip_html | truncatewords: 20 }}
             </p>
-          </article>
+          </div>
           {% endfor %}
         </div>
-      </div>
+      </article>
       {% endfor %}
     </section>
   </main>
 
-  <!-- Sidebar -->
-  <aside class="space-y-12">
-    <!-- Latest Posts -->
-    <section>
-      <h2 class="text-2xl font-bold mb-4">Latest Posts</h2>
-      {% for post in site.posts limit:5 %}
-      <article class="mb-4">
-        <h3 class="text-lg font-bold">
-          <a
-            href="{{ post.url | relative_url }}"
-            class="text-blue-600 hover:underline"
-            >{{ post.title }}</a
+  <!-- Sidebar Area -->
+  <aside class="space-y-12 lg:col-span-1">
+    <!-- Latest Posts Section -->
+    <section aria-label="Latest Posts">
+      <header class="mb-4">
+        <h2 class="text-2xl font-bold">Latest Posts</h2>
+      </header>
+      <ul class="space-y-4">
+        {% for post in site.posts limit:5 %}
+        <li class="border-b border-gray-200 pb-3">
+          <time
+            class="text-sm text-gray-500"
+            datetime="{{ post.date | date_to_xmlschema }}"
           >
-        </h3>
-        <p class="text-sm text-gray-500">{{ post.date | date: "%B %d, %Y" }}</p>
-      </article>
-      {% endfor %}
+            {{ post.date | date: "%B %d, %Y" }}
+          </time>
+          <h3 class="text-lg font-bold">
+            <a
+              href="{{ post.url | relative_url }}"
+              class="text-blue-600 hover:underline"
+              >{{ post.title }}</a
+            >
+          </h3>
+        </li>
+        {% endfor %}
+      </ul>
     </section>
 
-    <!-- Categories List -->
-    <section>
-      <h2 class="text-2xl font-bold mb-4">Categories</h2>
-      <ul>
+    <!-- Categories List Section -->
+    <section aria-label="Categories List">
+      <header class="mb-4">
+        <h2 class="text-2xl font-bold">Categories</h2>
+      </header>
+      <ul class="space-y-2">
         {% for category in site.categories %}
-        <li class="mb-2">
+        <li>
           <a
             href="{{ site.baseurl }}/categories/{{ category[0] }}"
             class="text-blue-600 hover:underline"
