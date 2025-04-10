@@ -11,7 +11,7 @@ collections:
     permalink: /posts/:title/ # Correctly set to link posts at the root level
 include:
   - _pages
-
+  - assets/css/output.css
 # Build settings
 markdown: kramdown
 theme: minima

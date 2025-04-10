@@ -5,13 +5,14 @@ date: 2025-03-21 14:10:48 -0800
 categories: [technology, opinion, genai, development]
 tags: [editorial, react, llms]
 featured: false
+hero_path: /assets/images/HumanRobotLibrary.png
 ---
 
 The rise of Generative AI (GenAI) is transforming how developers approach common development challenges. One emerging trend is the ability to use GenAI to generate custom, lightweight solutions that reduce the need for incorporating large, feature-rich libraries.
 
 It's a fairly common dilemma that a developer wants to use a libary to solve a specific issue. For exmaple, with React, I might want a component that enables more complex drop down menu functionality (like a nice inline "select many" UX). However, when looking for good 3rd party libraries, they typically provide every feature imaginable which can cause bloat, both in terms of size of the codebase but also in API and developer documentation.
 
-&nbsp;
+## Advantages to rolling your on AI-powered solution
 
 When a project only requires a subset of features from a comprehensive library, leveraging GenAI to implement the essential functionality can offer significant advantages:
 
@@ -24,7 +25,7 @@ When a project only requires a subset of features from a comprehensive library, 
 - **Enhanced Security and Maintainability:**  
   Writing code in-house means you have full visibility into how it works, reducing dependency on third-party libraries that might not be as thoroughly audited or could potentially introduce vulnerabilities. With GenAI assisting in generating a baseline, you benefit from speed without sacrificing control.
 
-&nbsp;
+## But there are tradeoffs
 
 That being said, there are trade-offs to consider:
 
@@ -33,6 +34,8 @@ That being said, there are trade-offs to consider:
 
 - **Reinventing the Wheel:**  
   There's a risk of reimplementing functionality that is already robustly handled by existing packages, if you're not careful. Maybe the all-encompassing library provides _all those features_ for a reason.
+
+## Hybrid approach
 
 To strike a balance, consider a hybrid approach:
 
@@ -44,8 +47,6 @@ To strike a balance, consider a hybrid approach:
 
 - **Tailor for Maintainability:**  
   Customize the generated code to blend seamlessly with the existing codebase, adopt your team's best practices, and ensure quality through comprehensive testing.
-
-&nbsp;
 
 This balanced strategy enables software developers to harness the benefits of external expertise while keeping their applications lightweight, secure, and maintainable. GenAI doesn't completely replace the need for libraries; rather, it offers a dynamic tool that can help you pick and choose the best parts while filling in the gaps with customized, purpose-built solutions.
 
