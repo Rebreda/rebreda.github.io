@@ -24,23 +24,31 @@ Thumbs.db
 *.bak
 *.orig
 
+# Node libraries
 node_modules/
+
 # Yarn files
 yarn-error.log
 yarn-debug.log
+
 # NPM files
 npm-debug.log
 
 # environment files
 .env
+
 # Jekyll files
 .sass-cache/
 .jekyll-cache/
+
 # Jekyll metadata
 .jekyll-metadata
+
 # Jekyll build files
 _site/
+
 # Gem files
 *.gem
+
 # Log files
 *.log
