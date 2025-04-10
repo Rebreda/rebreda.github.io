@@ -1,12 +1,15 @@
 ---
 layout: post
 title: "Using hCaptcha instead of Google's ReCaptcha with Vue and Express"
-date: 2020-12-15 17:10:48 -0800
+date: 2023-12-15 17:10:48 -0800
+updated: 2025-04-09 17:10:48 -0800
 categories: [development]
 tags: [vue, captcha, node, web-development, programming, google]
+hero_path: /assets/images/HumanVueLaptop.png
+hero_alt: "A colorful cartoon-style digital illustration depicting a light-skinned developer working on a laptop surrounded by code snippets, emphasizing the theme of integrating hCaptcha into web applications."
 ---
 
-For much the same reasons as my last [captcha related post](/development/opinion/2020/03/06/google-captcha-express-js.html), when needing a form of bot deterrence, it makes sense to use a captcha provider. At [fixed.link](https://fixed.link) we use it to gate registrations and no-account shortened URLs to help remove some risk of spam. To quickly sum it up, using a provider allows for an easy means of stopping most bots abilities to interact with an application.
+For much the same reasons as my last [captcha related post](/posts/google-captcha-express-js), when needing a form of bot deterrence, it makes sense to use a captcha provider. At **fixed.link** (a now defunct startup) we use it to gate registrations and no-account shortened URLs to help remove some risk of spam. To quickly sum it up, using a provider allows for an easy means of stopping most bots abilities to interact with an application.
 
 Historically, implementing a useful, and not-too-impossible challenge-test was difficult and chalk-full of issues (accessibility, language, buggy). With that said, there is no excuse into todays world to rely on a privacy-invading, ad-selling organization like Google for such a tool. This is where [hCaptcha](https://hCaptcha.com/?r=1d541b532693) comes in. Please note that I've used my referral link to hCaptcha (although it remains unknown what that actually provides me, but just fyi).
 

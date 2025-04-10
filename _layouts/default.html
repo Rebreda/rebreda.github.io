@@ -3,7 +3,39 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ page.title }}</title>
+    <title>{{ page.title }} - {{ site.title }}</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="{{ page.title }}" />
+    <meta
+      property="og:description"
+      content="{{ page.excerpt | strip_html | truncatewords: 30 }}"
+    />
+    {% if page.hero_path %}
+    <meta property="og:image" content="{{ page.hero_path | absolute_url }}" />
+    {% endif %}
+    <meta property="og:url" content="{{ page.url | absolute_url }}" />
+    <meta property="og:type" content="article" />
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="{{ page.title }}" />
+    <meta
+      name="twitter:description"
+      content="{{ page.excerpt | strip_html | truncatewords: 30 }}"
+    />
+    {% if page.hero_path %}
+    <meta name="twitter:image" content="{{ page.hero_path | absolute_url }}" />
+    {% endif %}
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Basic Meta Tags -->
+    <meta
+      name="description"
+      content="{{ page.excerpt | strip_html | truncatewords: 30 }}"
+    />
+    <link rel="canonical" href="{{ page.url | absolute_url }}" />
+
+    <!-- Stylesheets -->
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@tailwindcss/typography@0.4.0/dist/typography.min.css"
@@ -12,6 +44,7 @@
       rel="stylesheet"
       href="{{ '/assets/css/output.css' | relative_url }}"
     />
+
     <!-- Super lightweight analytics using goatcounter.com -->
     <script
       data-goatcounter="https://qtblog.goatcounter.com/count"

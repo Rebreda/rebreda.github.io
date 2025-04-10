@@ -16,11 +16,11 @@ layout: default
         class="bg-white shadow-lg rounded-xl overflow-hidden hover:shadow-2xl transition-shadow duration-300"
       >
         {% if featured_post.hero_path %}
-        <header>
+        <header class="relative w-full">
           <img
             src="{{ featured_post.hero_path }}"
             alt="{{ featured_post.hero_alt }}"
-            class="w-full h-64 object-cover"
+            class="w-full h-64 object-cover rounded-t-lg"
           />
         </header>
         {% endif %}
@@ -59,8 +59,17 @@ layout: default
           <div
             class="bg-white shadow rounded-lg p-4 hover:shadow-xl transition-shadow duration-300"
           >
-            <header>
-              <h4 class="text-xl font-bold mb-1">
+            <header class="relative w-full">
+              {% if post.hero_path %}
+              <div class="h-48">
+                <img
+                  src="{{ post.hero_path }}"
+                  alt="{{ post.hero_alt }}"
+                  class="w-full h-48 object-cover rounded-t-lg"
+                />
+              </div>
+              {% endif %}
+              <h4 class="text-xl font-bold mb-1 mt-4">
                 <a
                   href="{{ post.url | relative_url }}"
                   class="text-blue-600 hover:underline"
