@@ -3,63 +3,105 @@ layout: default
 title: "AutoTracko Dashboard"
 ---
 
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10">
-  <h1 class="text-3xl font-bold text-center mb-6 text-gray-800">
-    📊 AutoTracko Dashboard
-  </h1>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-10">
+  <header>
+    <h1 class="text-4xl font-bold text-center text-gray-800">
+      📊 AutoTracko Dashboard
+    </h1>
+    <p class="mt-2 text-center text-gray-600">
+      Explore high-level analytics, per-site tracker details, and a network view
+      of how trackers connect across sites.
+    </p>
+  </header>
 
   <!-- Tab Navigation -->
-  <div class="flex space-x-4 justify-center mb-8">
+  <nav class="flex space-x-4 justify-center border-b border-gray-200 pb-4">
     <button
       id="tab-charts"
       class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 focus:outline-none"
+      title="View high-level charts summarizing tracker data"
     >
       Charts
     </button>
     <button
       id="tab-domain-lookup"
       class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none"
+      title="Lookup specific domain details"
     >
       Domain Lookup
     </button>
     <button
       id="tab-tracker-network"
       class="px-4 py-2 bg-gray-200 text-gray-700 rounded hover:bg-gray-300 focus:outline-none"
+      title="See a visual network of sites and trackers"
     >
       Tracker Network
     </button>
-  </div>
+  </nav>
 
   <!-- Tab Content Containers -->
-  <div id="content-charts" class="tab-content">
-    <div id="charts" class="space-y-6">
+  <section id="content-charts" class="tab-content">
+    <div id="charts" class="space-y-8">
+      <!-- Bar Chart Section -->
       <div
-        id="bar-chart"
-        class="chart-container bg-white p-4 rounded-2xl shadow-md h-[400px]"
-      ></div>
-      <div
-        id="pie-chart"
-        class="chart-container bg-white p-4 rounded-2xl shadow-md h-[400px]"
-      ></div>
-      <div
-        id="stacked-bar-chart"
-        class="chart-container bg-white p-4 rounded-2xl shadow-md h-[400px]"
-      ></div>
-      <div
-        id="doughnut-chart"
-        class="chart-container bg-white p-4 rounded-2xl shadow-md h-[400px]"
-      ></div>
-    </div>
-  </div>
-
-  <div id="content-domain-lookup" class="tab-content hidden">
-    <div class="bg-white p-4 rounded-2xl shadow-md">
-      <label for="domain-select" class="block text-gray-700 font-medium mb-2"
-        >Select a Domain:</label
+        class="bg-white p-6 rounded-2xl shadow-md"
+        title="Bar Chart: Number of Trackers per Site"
       >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">Trackers per Site</h2>
+        <div id="bar-chart" class="h-[400px]"></div>
+      </div>
+
+      <!-- Pie Chart Section -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md"
+        title="Pie Chart: Distribution of Tracker Categories"
+      >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          Tracker Categories
+        </h2>
+        <div id="pie-chart" class="h-[400px]"></div>
+      </div>
+
+      <!-- Stacked Bar Chart Section -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md"
+        title="Stacked Bar Chart: Tracker Distribution by Country & Owner"
+      >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          Tracker Distribution by Country & Owner
+        </h2>
+        <div id="stacked-bar-chart" class="h-[400px]"></div>
+      </div>
+
+      <!-- Doughnut Chart Section -->
+      <div
+        class="bg-white p-6 rounded-2xl shadow-md"
+        title="Doughnut Chart: Top 10 Tracker Domains"
+      >
+        <h2 class="text-2xl font-bold text-gray-800 mb-4">
+          Top 10 Tracker Domains
+        </h2>
+        <div id="doughnut-chart" class="h-[400px]"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="content-domain-lookup" class="tab-content hidden">
+    <div class="bg-white p-6 rounded-2xl shadow-md">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">
+        Domain Tracker Details
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        Select a domain from the dropdown below to view detailed tracker
+        information for that site.
+      </p>
+      <label for="domain-select" class="block text-gray-700 font-medium mb-2">
+        Select a Domain:
+      </label>
       <select
         id="domain-select"
         class="w-full border border-gray-300 rounded p-2 mb-4"
+        title="Choose a domain to view tracker details"
       >
         <!-- Options will be populated dynamically -->
       </select>
@@ -67,14 +109,22 @@ title: "AutoTracko Dashboard"
         <!-- Detailed tracker info for the selected domain will be injected here -->
       </div>
     </div>
-  </div>
+  </section>
 
-  <div id="content-tracker-network" class="tab-content hidden">
-    <div
-      id="tracker-network-chart"
-      class="bg-white p-4 rounded-2xl shadow-md h-[600px]"
-    ></div>
-  </div>
+  <section id="content-tracker-network" class="tab-content hidden">
+    <div class="bg-white p-6 rounded-2xl shadow-md">
+      <h2 class="text-2xl font-bold text-gray-800 mb-4">
+        Tracker Network Graph
+      </h2>
+      <p class="text-sm text-gray-600 mb-4">
+        This interactive graph shows how sites are connected to the trackers
+        they use. Hover over nodes for details.
+      </p>
+      <div id="tracker-network-chart" class="h-[600px]"></div>
+    </div>
+  </section>
 </div>
+
+<link rel="icon" href="{{ '/assets/favicon.ico' | relative_url }}" />
 
 <script src="{{ '/assets/js/dashboard.js' | relative_url }}"></script>
