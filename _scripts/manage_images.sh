@@ -1,45 +1,86 @@
 #!/bin/bash
+# optimize_images.sh
+# Improved image optimization script.
 
-# Set the input directory
-INPUT_DIR="./assets/images"
+# Configurable parameters (can be overridden via ENV)
+INPUT_DIR="${INPUT_DIR:-./assets/images}"
+OPTIPNG_LEVEL="${OPTIPNG_LEVEL:-7}"
+JPEG_MAX="${JPEG_MAX:-90}"
 
-# Check if the input directory exists
-if [! -d "$INPUT_DIR" ]; then
-  echo "Error: Input directory does not exist."
+# Function to check if a command exists.
+check_command() {
+  if ! command -v "$1" &> /dev/null; then
+    echo "Error: $1 is not installed. Please install it using your package manager."
+    exit 1
+  fi
+}
+
+# Check required commands.
+check_command optipng
+check_command jpegoptim
+check_command gifsicle
+
+# Check if the input directory exists.
+if [ ! -d "$INPUT_DIR" ]; then
+  echo "Error: Input directory '$INPUT_DIR' does not exist."
   exit 1
 fi
 
-# Check if optipng is installed
-if! command -v optipng &> /dev/null; then
-  echo "Error: optipng is not installed. Please install it using your package manager."
-  exit 1
-fi
+# Initialize counters.
+optipng_fail=0
+jpegoptim_fail=0
+gifsicle_fail=0
 
-# Check if jpegoptim is installed
-if! command -v jpegoptim &> /dev/null; then
-  echo "Error: jpegoptim is not installed. Please install it using your package manager."
-  exit 1
-fi
+# Optimize PNG images.
+optimize_png() {
+  find "$INPUT_DIR" -type f -name "*.png" -print0 | while IFS= read -r -d '' file; do
+    if ! optipng -o$OPTIPNG_LEVEL -strip all "$file"; then
+      echo "Error optimizing PNG: $file"
+      ((optipng_fail++))
+    else
+      echo "Optimized: $file"
+    fi
+  done
+}
 
-# Check if gifsicle is installed
-if! command -v gifsicle &> /dev/null; then
-  echo "Error: gifsicle is not installed. Please install it using your package manager."
-  exit 1
-fi
+# Optimize JPEG images.
+optimize_jpeg() {
+  find "$INPUT_DIR" -type f \( -name "*.jpg" -o -name "*.jpeg" \) -print0 | while IFS= read -r -d '' file; do
+    if ! jpegoptim --strip-all --all-progressive --max=$JPEG_MAX "$file"; then
+      echo "Error optimizing JPEG: $file"
+      ((jpegoptim_fail++))
+    else
+      echo "Optimized: $file"
+    fi
+  done
+}
 
-# Optimize PNG images using optipng
-find "$INPUT_DIR" -type f -name "*.png" -print0 | while IFS= read -r -d '' file; do
-  optipng -o7 -strip all "$file" || echo "Error optimizing $file"
-done
+# Optimize GIF images.
+optimize_gif() {
+  find "$INPUT_DIR" -type f -name "*.gif" -print0 | while IFS= read -r -d '' file; do
+    if ! gifsicle -b -O3 "$file"; then
+      echo "Error optimizing GIF: $file"
+      ((gifsicle_fail++))
+    else
+      echo "Optimized: $file"
+    fi
+  done
+}
 
-# Optimize JPEG images using jpegoptim
-find "$INPUT_DIR" -type f -name "*.jpg" -o -name "*.jpeg" -print0 | while IFS= read -r -d '' file; do
-  jpegoptim --strip-all --all-progressive --max=90 "$file" || echo "Error optimizing $file"
-done
+# Run optimizations.
+echo "Optimizing PNG images..."
+optimize_png
 
-# Optimize GIF images using gifsicle
-find "$INPUT_DIR" -type f -name "*.gif" -print0 | while IFS= read -r -d '' file; do
-  gifsicle -b -O3 "$file" || echo "Error optimizing $file"
-done
+echo "Optimizing JPEG images..."
+optimize_jpeg
 
+echo "Optimizing GIF images..."
+optimize_gif
+
+# Print summary.
+echo "----------------------------------------"
 echo "Image optimization complete."
+echo "PNG failures: $optipng_fail"
+echo "JPEG failures: $jpegoptim_fail"
+echo "GIF failures: $gifsicle_fail"
+echo "----------------------------------------"
