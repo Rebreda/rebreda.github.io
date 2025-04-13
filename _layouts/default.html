@@ -57,7 +57,7 @@
   </head>
   <body class="bg-gray-100 text-gray-900 antialiased">
     <!-- Header -->
-    <header class="bg-gray-900 text-white">
+    <header>
       <div
         class="max-w-7xl mx-auto px-6 py-6 flex justify-between items-center"
       >
@@ -65,7 +65,7 @@
         <h1 class="text-3xl font-bold">
           <a
             href="{{ '/' | relative_url }}"
-            class="text-gray-800 hover:text-gray-300"
+            class="text-gray-800 hover:text-gray-600"
           >
             {{ site.title }}
           </a>
@@ -78,7 +78,7 @@
             <li>
               <a
                 href="{{ link.url | relative_url }}"
-                class="text-white hover:text-gray-300 transition-colors duration-200"
+                class="hover:text-gray-700 transition-colors duration-200"
               >
                 {{ link.title }}
               </a>
