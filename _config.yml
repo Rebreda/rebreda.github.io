@@ -12,6 +12,14 @@ collections:
 include:
   - _pages
   - assets/css/output.css
+nav_links:
+  - title: Code
+    url: https://github.com/Rebreda
+  - title: AutoTracko
+    url: /autotracko
+  - title: RSS
+    url: /feed.xml
+
 # Build settings
 markdown: kramdown
 theme: minima
