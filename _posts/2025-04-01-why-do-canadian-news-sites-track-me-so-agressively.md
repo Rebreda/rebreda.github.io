@@ -31,7 +31,7 @@ I checked a couple of other Canadian news agencies online to build up some initi
 
 So I built out an automated tracker checker that scans and processes a list of sites, and then compiles all the raw data into a human digestible analysis on the sites. I called the project [autotracko](https://github.com/Rebreda/autotracko) which is available on Github and has more details of how the actual mechanics work. The high level is it leverages a [headless browser](https://github.com/puppeteer/puppeteer) with a bunch of NodeJS code to load a list of domains, find what requests the pages make, then crosscheck the request domains to a [tracker blocklist](https://github.com/duckduckgo/tracker-blocklists) from DuckDuckGo which provides an up-to-date list of suspected trackers.
 
-After running through the list, there are a couple scripts to automatically compile interesting statistics from the raw results and provide insights of what types of trackers are commonly used, which sites use what trackers, and other geographic data, like what countries news agency use the most trackers.
+After running through the list, there are a couple scripts to automatically compile interesting statistics from the raw results and provide insights of what types of trackers are commonly used, which sites use what trackers, and other geographic data, like what countries news agency use the most trackers. [There's also a dashboard](/autotracko.html) if you're interested in exploring the data visually.
 
 ## Whats next
 
