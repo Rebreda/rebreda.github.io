@@ -1,6 +1,6 @@
 ---
 layout: category
-title: genai
-category: genai
+title: GenAI
+category: GenAI
 permalink: /categories/genai/
 ---

@@ -2,7 +2,7 @@
 layout: post
 title: "Rethinking Library Dependencies in the GenAI age"
 date: 2025-03-21 14:10:48 -0800
-categories: [technology, opinion, genai, development]
+categories: [technology, opinion, GenAI, development]
 tags: [editorial, react, llms]
 featured: false
 hero_path: /assets/images/HumanRobotLibrary.png
