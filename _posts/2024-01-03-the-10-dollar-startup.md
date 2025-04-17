@@ -6,9 +6,7 @@ categories: [startup, opinion]
 tags: [startups, business, advice, cash-strapped, tech, opinion]
 ---
 
-## Summary
-
-When building [Fixed.link](https://fixed.link/), I prioritized minimizing spend and built my startup which served many thousands of users while spending only $10 a month. Early on in your startup journey, it's crucial to be resourceful and make things work for you. How? Specifically for SaaS startups, utilize flexible tools (e.g., while managed Kubernetes/database/load balancer/toaster services are convenient, they're far more expensive than a VPS), "hack" things (use free tiers and competitor services to ensure your service runs smoothly), choose the most effective advertising channels, seek out referrals, and code—don't buy (unless absolutely necessary). This is the approach I've taken so far. Read on for more ideas and specific examples of how I've put these practices into action. A heads up: I use referrals for tools that save money or get things done; these are marked with an asterisk (\*).
+When building Fixed.link, I prioritized minimizing spend and built my startup which served many thousands of users while spending only $10 a month. Early on in your startup journey, it's crucial to be resourceful and make things work for you. How? Specifically for SaaS startups, utilize flexible tools (e.g., while managed Kubernetes/database/load balancer/toaster services are convenient, they're far more expensive than a VPS), "hack" things (use free tiers and competitor services to ensure your service runs smoothly), choose the most effective advertising channels, seek out referrals, and code—don't buy (unless absolutely necessary). This is the approach I've taken so far. Read on for more ideas and specific examples of how I've put these practices into action. A heads up: I use referrals for tools that save money or get things done; these are marked with an asterisk (\*).
 
 ## The Mindset Behind Founding a Low-Cost Startup
 

@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<section class="container mx-auto my-12 px-4">
-  <h1 class="text-4xl font-bold mb-6">{{ page.title }}</h1>
+<section class="container mx-auto my-12 px-4 min-h-screen">
+  <h1 class="text-4xl font-bold mb-6 capitalize">{{ page.title }} Posts</h1>
 
   {% assign category_name = page.category %} {% assign posts_in_category =
   site.posts | where_exp:"post", "post.categories contains category_name" %} {%
